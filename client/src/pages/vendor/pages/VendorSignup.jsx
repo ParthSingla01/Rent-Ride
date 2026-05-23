@@ -32,11 +32,14 @@ function VendorSignup() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/vendor/vendorsignup, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/vendor/vendorsignup`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        },
+      );
       const data = await res.json();
       setLoading(false);
       if (data.succes === false) {

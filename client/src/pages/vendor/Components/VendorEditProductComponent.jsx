@@ -52,7 +52,7 @@ export default function VendorEditProductComponent() {
         tostID = toast.loading("saving...", { position: "bottom-center" });
         const formData = editData;
         const res = await fetch(
-           `${import.meta.env.VITE_API_URL}`/api/vendor/vendorEditVehicles/`${vehicle_id}`,
+           `${import.meta.env.VITE_API_URL}/api/vendor/vendorEditVehicles/${vehicle_id}`,
           {
             method: "PUT",
             headers: {

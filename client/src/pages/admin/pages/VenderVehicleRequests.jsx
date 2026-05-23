@@ -20,7 +20,7 @@ const VenderVehicleRequests = () => {
   useEffect(() => {
     const fetchVendorRequest = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}`/api/admin/fetchVendorVehilceRequests, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/fetchVendorVehilceRequests`, {
           method: "GET",
         });
         if (!res.ok) {

@@ -13,7 +13,7 @@ function VendorOAuth() {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}`/api/vendor/vendorgoogle,
+        `${import.meta.env.VITE_API_URL}/api/vendor/vendorgoogle`,
         {
           method: "POST",
           headers: {

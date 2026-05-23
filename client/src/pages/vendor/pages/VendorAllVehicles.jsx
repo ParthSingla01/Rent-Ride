@@ -34,7 +34,7 @@ const VendorAllVehicles = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/vendor/showVendorVehilces, {
+        const res = await fetch( `${import.meta.env.VITE_API_URL}/api/vendor/showVendorVehilces`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

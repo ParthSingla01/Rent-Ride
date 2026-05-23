@@ -28,7 +28,7 @@ const VendorBookingsTable = () => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/vendor/showVendorVehilces, {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}/api/vendor/showVendorVehilces`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const VendorBookingsTable = () => {
   // fetching all bookings
   const fetchBookings = async () => {
     try {
-      const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/admin/allBookings, {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/allBookings`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +91,7 @@ const VendorBookingsTable = () => {
 
     const changeVehicleStatus = async () => {
       try {
-        const isStatusChanged = await fetch( `${import.meta.env.VITE_API_URL}`/api/admin/changeStatus, {
+        const isStatusChanged = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/changeStatus`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -63,7 +63,7 @@ export async function displayRazorpay(values, navigate, dispatch) {
     }
 
     // creating a new order
-    const result = await fetch( `${import.meta.env.VITE_API_URL}`/api/user/razorpay, {
+    const result = await fetch( `${import.meta.env.VITE_API_URL}/api/user/razorpay`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${refreshToken},${accessToken}`,
@@ -99,7 +99,7 @@ export async function displayRazorpay(values, navigate, dispatch) {
 
         // final data to store in database
         const dbData = { ...values, ...data };
-        const result = await fetch( `${import.meta.env.VITE_API_URL}`/api/user/bookCar, {
+        const result = await fetch( `${import.meta.env.VITE_API_URL}/api/user/bookCar`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

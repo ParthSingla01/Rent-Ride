@@ -24,7 +24,7 @@ import {  setLoading, setadminAddVehicleSuccess, setadminCrudError } from "../..
 
 export const fetchModelData = async (dispatch) => {
   try {
-    const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/admin/getVehicleModels, {
+    const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/getVehicleModels`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

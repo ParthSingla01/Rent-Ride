@@ -25,7 +25,7 @@ const VendorSidebar = () => {
 
   //SignOut
   const handleSignout = async () => {
-    const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/admin/signout, {
+    const res = await fetch( `${import.meta.env.VITE_API_URL}/api/admin/signout`, {
       method: "GET",
     });
     const data = await res.json();

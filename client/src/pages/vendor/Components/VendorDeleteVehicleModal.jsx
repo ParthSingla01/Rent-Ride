@@ -14,7 +14,7 @@ const VendorDeleteVehicleModal = () => {
    //delete a vehicle
  const vendorHandleDelete = async () => {
     try{
-      const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/vendor/vendorDeleteVehicles/`${vehicle_id}`, {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}/api/vendor/vendorDeleteVehicles/${vehicle_id}`, {
         method: "DELETE"
       })
       if(!res.ok){

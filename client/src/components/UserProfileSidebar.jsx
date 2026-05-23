@@ -32,7 +32,7 @@ const UserProfileSidebar = () => {
   //SignOut
   const handleSignout = async () => {
     const res = await fetch(
-       `${import.meta.env.VITE_API_URL}`/api/admin/signout,
+       `${import.meta.env.VITE_API_URL}/api/admin/signout` ,
       {
         method: "GET",
         credentials: "include",
@@ -49,7 +49,7 @@ const UserProfileSidebar = () => {
     try {
       dispatch(deleteUserStart());
       const res = await fetch(
-         `${import.meta.env.VITE_API_URL}`/api/user/delete/${currentUser._id}`,
+        `${import.meta.env.VITE_API_URL}/api/user/delete/${currentUser._id}`,
         {
           method: "DELETE",
         },
