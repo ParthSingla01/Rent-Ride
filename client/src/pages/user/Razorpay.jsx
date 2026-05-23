@@ -22,13 +22,16 @@ export function loadScript(src) {
 //function to fetch latest bookings from db and update it to redux
 export const fetchLatestBooking = async (user_id, dispatch) => {
   try {
-    const response = await fetch("/api/user/latestbookings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}` / api / user / latestbookings,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user_id }),
       },
-      body: JSON.stringify({ user_id }),
-    });
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch latest booking");
@@ -60,7 +63,7 @@ export async function displayRazorpay(values, navigate, dispatch) {
     }
 
     // creating a new order
-    const result = await fetch("/api/user/razorpay", {
+    const result = await fetch( `${import.meta.env.VITE_API_URL}`/api/user/razorpay, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${refreshToken},${accessToken}`,
@@ -96,7 +99,7 @@ export async function displayRazorpay(values, navigate, dispatch) {
 
         // final data to store in database
         const dbData = { ...values, ...data };
-        const result = await fetch("/api/user/bookCar", {
+        const result = await fetch( `${import.meta.env.VITE_API_URL}`/api/user/bookCar, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

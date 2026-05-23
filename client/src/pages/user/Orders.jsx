@@ -20,15 +20,18 @@ export default function Orders() {
 
   const fetchBookings = async () => {
     try {
-      const res = await fetch("/api/user/findBookingsOfUser", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}` / api / user / findBookingsOfUser,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: _id,
+          }),
         },
-        body: JSON.stringify({
-          userId: _id,
-        }),
-      });
+      );
 
       const data = await res.json();
       if (data) {

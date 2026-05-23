@@ -28,6 +28,7 @@ App.listen(port, () => {
 });
 
 const allowedOrigins = [
+  "https://rent-ride.vercel.app", // Your actual new Vercel link!
   "https://rent-a-ride-two.vercel.app",
   "http://localhost:5173",
 ]; // Add allowed origins here

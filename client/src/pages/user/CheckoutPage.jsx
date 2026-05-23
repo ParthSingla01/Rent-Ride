@@ -23,13 +23,16 @@ export async function sendBookingDetailsEmail(
   dispatch
 ) {
   try {
-    const sendEamil = await fetch("/api/user/sendBookingDetailsEamil", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const sendEamil = await fetch(
+      `${import.meta.env.VITE_API_URL}` / api / user / sendBookingDetailsEamil,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ toEmail, data: bookingDetails }),
       },
-      body: JSON.stringify({ toEmail, data: bookingDetails }),
-    });
+    );
     const response = await sendEamil.json();
 
     if (!response.ok) {

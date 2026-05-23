@@ -20,7 +20,7 @@ const VenderVehicleRequests = () => {
   useEffect(() => {
     const fetchVendorRequest = async () => {
       try {
-        const res = await fetch(`/api/admin/fetchVendorVehilceRequests`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}`/api/admin/fetchVendorVehilceRequests, {
           method: "GET",
         });
         if (!res.ok) {
@@ -46,15 +46,21 @@ const VenderVehicleRequests = () => {
   const handleApproveRequest = async (id) => {
     try {
       dispatch(setUpdateRequestTable(id))
-      const res = await fetch("/api/admin/approveVendorVehicleRequest", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}` /
+          api /
+          admin /
+          approveVendorVehicleRequest,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            _id: id,
+          }),
         },
-        body: JSON.stringify({
-          _id: id,
-        }),
-      });
+      );
 
       if (!res.ok) {
         console.log("error");
@@ -70,15 +76,21 @@ const VenderVehicleRequests = () => {
   const handleReject = async (id) => {
     try {
      
-      const res = await fetch("/api/admin/rejectVendorVehicleRequest", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}` /
+          api /
+          admin /
+          rejectVendorVehicleRequest,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            _id: id,
+          }),
         },
-        body: JSON.stringify({
-          _id: id,
-        }),
-      });
+      );
       if (!res.ok) {
         console.log("error", res);
       }

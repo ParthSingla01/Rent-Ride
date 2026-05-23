@@ -53,7 +53,7 @@ export default function EditProductComponent() {
         tostID = toast.loading("saving...", { position: "bottom-center" });
         const formData = editData;
         dispatch(setEditData({ _id: vehicle_id, ...formData }));
-        const res = await fetch(`/api/admin/editVehicle/${vehicle_id}`, {
+        const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/admin/editVehicle/`${vehicle_id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

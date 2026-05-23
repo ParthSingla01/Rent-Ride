@@ -18,7 +18,7 @@ import SkeletonLoader from "../../components/ui/SkeletonLoader";
 //use Custome hook in this case :)
 export const onVehicleDetail = async (id, dispatch, navigate) => {
   try {
-    const res = await fetch("/api/user/showVehicleDetails", {
+    const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/user/showVehicleDetails, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,7 @@ const Vehicles = () => {
     dispatch(setVariants(null));
     const fetchData = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/api/user/listAllVehicles`,{
+        const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/user/listAllVehicles,{
           headers:{'Authorization':`Bearer ${refreshToken},${accessToken}`},
           credentials:'include'
         });

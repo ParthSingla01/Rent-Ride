@@ -8,12 +8,15 @@ const BookingsTable = () => {
 
   const fetchBookings = async () => {
     try {
-      const res = await fetch("/api/admin/allBookings", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}` / api / admin / allBookings,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
-      });
+      );
 
       const data = await res.json();
       if (data) {
@@ -30,16 +33,19 @@ const BookingsTable = () => {
 
     const changeVehicleStatus = async () => {
       try {
-        const isStatusChanged = await fetch("/api/admin/changeStatus", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        const isStatusChanged = await fetch(
+          `${import.meta.env.VITE_API_URL}` / api / admin / changeStatus,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: bookingId,
+              status: newStatus,
+            }),
           },
-          body: JSON.stringify({
-            id: bookingId,
-            status: newStatus,
-          }),
-        });
+        );
 
         if (!isStatusChanged.ok) {
           return;

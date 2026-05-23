@@ -67,7 +67,7 @@ function SignIn() {
     e.preventDefault();
     try {
       dispatch(signInStart());
-      const res = await fetch(`${BASE_URL}/api/auth/signin`, {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/auth/signin, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

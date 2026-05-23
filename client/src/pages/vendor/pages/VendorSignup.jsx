@@ -32,7 +32,7 @@ function VendorSignup() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch("/api/vendor/vendorsignup", {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/vendor/vendorsignup, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

@@ -29,9 +29,12 @@ function AllVehicles() {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const res = await fetch("/api/admin/showVehicles", {
-          method: "GET",
-        });
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}` / api / admin / showVehicles,
+          {
+            method: "GET",
+          },
+        );
         if (res.ok) {
           const data = await res.json();
           setVehicles(data);
@@ -48,7 +51,7 @@ function AllVehicles() {
   const handleDelete = async (vehicle_id) => {
     try {
       setVehicles(allVehicles.filter((cur) => cur._id !== vehicle_id));
-      const res = await fetch(`/api/admin/deleteVehicle/${vehicle_id}`, {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/admin/deleteVehicle/`${vehicle_id}`, {
         method: "DELETE",
       });
       if (res.ok) {

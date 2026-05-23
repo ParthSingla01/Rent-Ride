@@ -75,7 +75,7 @@ const VendorAddProductModal = () => {
         tostID = toast.loading("saving...", { position: "bottom-center" });
       }
 
-      const res = await fetch("/api/vendor/vendorAddVehicle", {
+      const res = await fetch( `${import.meta.env.VITE_API_URL}`/api/vendor/vendorAddVehicle, {
         method: "POST",
         body: formData,
       });

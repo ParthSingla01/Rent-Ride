@@ -23,13 +23,20 @@ const ProfileEdit = () => {
       if (data) {
         const formData = data;
         dispatch(editUserProfile({ ...formData }));
-        await fetch(`/api/user/editUserProfile/${id}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        await fetch(
+          `${import.meta.env.VITE_API_URL}` /
+            api /
+            user /
+            editUserProfile /
+            `${id}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ formData }),
           },
-          body: JSON.stringify({ formData }),
-        });
+        );
         // dispatch(editUserProfile(null));
         dispatch(setUpdated(true));
       }

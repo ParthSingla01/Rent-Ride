@@ -13,15 +13,12 @@ import { links } from "./UserSidebarContent";
 import { showSidebarOrNot } from "../redux/adminSlices/adminDashboardSlice/DashboardSlice";
 import { CiLogout } from "react-icons/ci";
 
-
 const UserProfileSidebar = () => {
   const { activeMenu, screenSize } = useSelector(
-    (state) => state.adminDashboardSlice
+    (state) => state.adminDashboardSlice,
   );
 
-  const { currentUser, isLoading } = useSelector(
-    (state) => state.user
-  );
+  const { currentUser, isLoading } = useSelector((state) => state.user);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -34,10 +31,13 @@ const UserProfileSidebar = () => {
 
   //SignOut
   const handleSignout = async () => {
-    const res = await fetch("/api/admin/signout", {
-      method: "GET",
-      credentials:'include'
-    });
+    const res = await fetch(
+       `${import.meta.env.VITE_API_URL}`/api/admin/signout,
+      {
+        method: "GET",
+        credentials: "include",
+      },
+    );
     const data = await res.json();
     if (data) {
       dispatch(signOut());
@@ -48,9 +48,12 @@ const UserProfileSidebar = () => {
   const handleDelete = async () => {
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+         `${import.meta.env.VITE_API_URL}`/api/user/delete/${currentUser._id}`,
+        {
+          method: "DELETE",
+        },
+      );
       const data = await res.json();
       if (data.succes === false) {
         dispatch(deleteUserFailure(data));
@@ -79,7 +82,9 @@ const UserProfileSidebar = () => {
             <TooltipComponent content={"menu"} position="BottomCenter">
               <button
                 className="text-xl rounded-full p-3 mt-4 block  hover:bg-gray-500"
-                onClick={() => {dispatch(showSidebarOrNot(false))}}
+                onClick={() => {
+                  dispatch(showSidebarOrNot(false));
+                }}
               >
                 <MdOutlineCancel />
               </button>
@@ -111,8 +116,7 @@ const UserProfileSidebar = () => {
             ))}
 
             <div className="flex flex-col gap-y-5">
-
-            <div className="flex items-center mt-10 gap-2">
+              <div className="flex items-center mt-10 gap-2">
                 <button
                   type="button"
                   className="ml-4 text-red-400"
@@ -123,17 +127,14 @@ const UserProfileSidebar = () => {
                 <CiLogout />
               </div>
               <div className="ml-4">
-              <button
-                className="text-red-400"
-                onClick={handleDelete}
-                type="button"
-              >
-                {isLoading ? "Loading..." : "Delete User"}
-              </button>
+                <button
+                  className="text-red-400"
+                  onClick={handleDelete}
+                  type="button"
+                >
+                  {isLoading ? "Loading..." : "Delete User"}
+                </button>
               </div>
-              
-
-              
             </div>
           </div>
         </>

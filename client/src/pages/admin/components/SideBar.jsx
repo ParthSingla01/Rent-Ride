@@ -24,9 +24,13 @@ const SideBar = () => {
 
   //SignOut
   const handleSignout = async () => {
-    const res = await fetch("/api/admin/signout", {
-      method: "GET",
-    });
+   const res = await fetch(
+     `${import.meta.env.VITE_API_URL}/api/admin/signout`,
+     {
+       method: "GET",
+       credentials: "include",
+     },
+   );
     const data = await res.json();
     if (data) {
       dispatch(signOut());
