@@ -5,7 +5,6 @@ const tailwindConfig = {
   theme: {
     extend: {
       backgroundImage: {
-        // Vite will automatically find this path inside your project!
         "hero-pattern": "url('/src/pages/admin/data/welcome-bg.svg')",
       },
     },
