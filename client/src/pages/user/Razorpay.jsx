@@ -23,7 +23,8 @@ export function loadScript(src) {
 export const fetchLatestBooking = async (user_id, dispatch) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}` / api / user / latestbookings,
+      `${import.meta.env.VITE_API_URL}/api/user/latestbookings`,
+      // .
       {
         method: "POST",
         headers: {
@@ -51,7 +52,7 @@ export const fetchLatestBooking = async (user_id, dispatch) => {
 export async function displayRazorpay(values, navigate, dispatch) {
   try {
     const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
+      "https://checkout.razorpay.com/v1/checkout.js",
     );
 
     let refreshToken = localStorage.getItem("refreshToken");
@@ -63,15 +64,18 @@ export async function displayRazorpay(values, navigate, dispatch) {
     }
 
     // creating a new order
-    const result = await fetch( `${import.meta.env.VITE_API_URL}/api/user/razorpay`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${refreshToken},${accessToken}`,
-        "Content-Type": "application/json",
-      },
+    const result = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/user/razorpay`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${refreshToken},${accessToken}`,
+          "Content-Type": "application/json",
+        },
 
-      body: JSON.stringify(values),
-    });
+        body: JSON.stringify(values),
+      },
+    );
 
     const data = await result.json();
 
@@ -84,7 +88,7 @@ export async function displayRazorpay(values, navigate, dispatch) {
     const { amount, id, currency } = data;
 
     const options = {
-      key: import.meta.env.RAZORPAY_KEY_ID,
+      key: "rzp_test_SryqnbY0pfCAUt",
       amount: amount.toString(),
       currency: currency,
       name: "Rent a Ride",
@@ -99,13 +103,16 @@ export async function displayRazorpay(values, navigate, dispatch) {
 
         // final data to store in database
         const dbData = { ...values, ...data };
-        const result = await fetch( `${import.meta.env.VITE_API_URL}/api/user/bookCar`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+        const result = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/user/bookCar`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dbData),
           },
-          body: JSON.stringify(dbData),
-        });
+        );
         const successStatus = await result.json();
         if (successStatus) {
           dispatch(setIsSweetAlert(true));
@@ -120,9 +127,9 @@ export async function displayRazorpay(values, navigate, dispatch) {
         }
       },
       prefill: {
-        name: "Jeevan aj",
-        email: "ambrahamjeevan@gmail.com",
-        contact: "8086240993",
+        name: "Parth Singla",
+        email: "parthsingla7404@gmail.com",
+        contact: "7404892904",
       },
       theme: {
         color: "#61dafb",
