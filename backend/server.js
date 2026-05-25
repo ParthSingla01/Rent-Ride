@@ -31,6 +31,7 @@ const allowedOrigins = [
   "https://rent-ride.vercel.app", // Your actual new Vercel link!
   "https://rent-a-ride-two.vercel.app",
   "http://localhost:5173",
+  "https://rent-ride-kappa.vercel.app/",
 ]; // Add allowed origins here
 
 App.use(
